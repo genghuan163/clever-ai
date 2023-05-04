@@ -1,0 +1,38 @@
+
+
+# DataSource Config
+spring:
+  datasource:
+    username: root
+    password: 02191219hh
+    url: jdbc:mysql://127.0.0.1:3306/platform?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # Redis 配置
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    timeout: 5000ms
+    jedis:
+      pool:
+        max-active: 1024
+        max-wait: 5000ms
+        min-idle: 5
+        max-idle: 200
+
+server:
+  port: 7003
+  context-path: /clever-ai
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+
+#rocketmq配置信息
+rocketmq:
+  #nameservice服务器地址（多个以英文逗号隔开）
+  name-server: 127.0.0.1:9876
+  #生产者配置
+  producer:
+    #组名
+    group: seckill-producer-group
+

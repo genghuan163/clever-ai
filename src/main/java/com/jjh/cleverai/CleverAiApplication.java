@@ -1,0 +1,14 @@
+package com.jjh.cleverai;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@MapperScan("com.jjh.cleverai.dao")
+@SpringBootApplication(scanBasePackages = "com.jjh.cleverai")
+public class CleverAiApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(CleverAiApplication.class, args);
+    }
+
+}
