@@ -2,37 +2,21 @@
 
 # DataSource Config
 spring:
-  datasource:
-    username: root
-    password: 02191219hh
-    url: jdbc:mysql://127.0.0.1:3306/platform?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  # Redis 配置
-  redis:
-    database: 1
-    host: 127.0.0.1
-    port: 6379
-    timeout: 5000ms
-    jedis:
-      pool:
-        max-active: 1024
-        max-wait: 5000ms
-        min-idle: 5
-        max-idle: 200
+  profiles:
+    active: @profiles.active@
 
 server:
-  port: 7003
+  port: 9992
   context-path: /clever-ai
 
+
+chatgpt:
+  token: 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
+  proxy-host: 127.0.0.1
+  proxy-port: 7890
+  model: text-davinci-003 #可选
+  chat-model: gpt-3.5-turbo #可选
+  retries: 10 #可选，默认为5
+  session-expiration-time: 30 #可选，不填则会话永不过期
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
-
-#rocketmq配置信息
-rocketmq:
-  #nameservice服务器地址（多个以英文逗号隔开）
-  name-server: 127.0.0.1:9876
-  #生产者配置
-  producer:
-    #组名
-    group: seckill-producer-group
-

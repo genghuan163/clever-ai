@@ -1,58 +1,45 @@
 package com.jjh.cleverai.common;
-import com.jjh.cleverai.common.enums.ErrorCodeEnum;
+import com.jjh.cleverai.common.enums.ResponseEnum;
 import lombok.Data;
+
+import java.io.Serializable;
 
 
 @Data
-public class Result {
+public class Result<T> implements Serializable {
 
 
-    public static final int SUCCESS = 200;
 
+    /**响应码**/
+    private Integer code;
 
-    private Integer status;
+    /**返回消息**/
+    private String message;
 
+    /**返回数据**/
+    private T data;
 
-    private String msg;
+    private Result(){}
 
-
-    private Object data;
-
-
-    public Result() {
-
+    public static <T> Result<T> ok(T data) {
+        Result<T> response = new Result<>();
+        response.setCode(ResponseEnum.SUCCESS.getCode());
+        response.setMessage(ResponseEnum.SUCCESS.getResultMessage());
+        response.setData(data);
+        return response;
     }
 
-    public Result(Object data) {
-        this.status = SUCCESS;
-        this.msg = "OK";
-        this.data = data;
+    public static <T> Result<T> exception(Integer errCode, String errMessage){
+        Result<T> response = new Result<>();
+        response.setCode(errCode);
+        response.setMessage(errMessage);
+        return response;
     }
 
-    public Result(Integer status, String msg, Object data) {
-        this.status = status;
-        this.msg = msg;
-        this.data = data;
+    public static <T> Result<T> exception(ResponseEnum responseEnum){
+        Result<T> response = new Result<>();
+        response.setCode(responseEnum.getCode());
+        response.setMessage(responseEnum.getResultMessage());
+        return response;
     }
-
-    public static Result ok() {
-        return new Result(null);
-    }
-
-    public static Result ok(Object data) {
-        return new Result(data);
-    }
-
-    public static Result error(ErrorCodeEnum errorCodeEnum) {
-        return new Result(errorCodeEnum.getValue(), errorCodeEnum.getMessage(), "");
-    }
-
-    public static Result build(Integer status, String msg) {
-        return new Result(status, msg, null);
-    }
-
-    public static Result build(Integer status, String msg, Object data) {
-        return new Result(status, msg, data);
-    }
-
 }

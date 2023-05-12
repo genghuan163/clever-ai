@@ -1,0 +1,12 @@
+
+
+# DataSource Config
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    username: admin
+    password: iwccTc8H6N4FN74rnOqq
+    url: jdbc:mysql://database-1.cu1gfeifb7ks.ap-east-1.rds.amazonaws.com:3306/clever-ai?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+

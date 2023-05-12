@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.apache.platform.dao.TUsersMapper">
+<mapper namespace="com.jjh.cleverai.dao.TUsersMapper">
   <resultMap id="BaseResultMap" type="com.jjh.cleverai.model.TUsers">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -15,4 +15,12 @@
     <result column="updated_by" jdbcType="VARCHAR" property="updatedBy" />
     <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
   </resultMap>
+
+  <select id="selectUserByName" resultType="com.jjh.cleverai.model.TUsers">
+    select * from t_users where username = #{username};
+  </select>
+
+  <select id="selectUserByPhone" resultType="com.jjh.cleverai.model.TUsers">
+    select * from t_users where phone_number = #{phone};
+  </select>
 </mapper>
