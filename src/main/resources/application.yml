@@ -11,7 +11,7 @@ server:
 
 
 chatgpt:
-  token: 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
+  token: RKvAEDLAoh98+xsqgwZpE0d9M6rcJRwKUeuWqrTFIzi9LTHE1ZLMh8s2lVzvpb4Pnwx1NyaYdZlIgLs7OT94Hg==
   proxy-host: 127.0.0.1
   proxy-port: 7890
   model: text-davinci-003 #可选

@@ -1,5 +1,6 @@
 package com.jjh.cleverai.controller;
 
+import com.jjh.cleverai.annotation.PassToken;
 import io.github.asleepyfish.util.OpenAiUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ public class ChatGPTController {
     /**
      * 流式问答，输出结果到WEB浏览器端
      */
+    @PassToken(filter = true)
     @PostMapping("/streamChatWithWeb")
     public void  streamChatWithWeb(String content, HttpServletResponse response) throws IOException, InterruptedException {
         // 需要指定response的ContentType为流式输出，且字符编码为UTF-8

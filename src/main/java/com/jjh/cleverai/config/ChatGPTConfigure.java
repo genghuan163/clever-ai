@@ -1,6 +1,7 @@
 package com.jjh.cleverai.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jjh.cleverai.utils.AESDecryptUtils;
 import com.theokanning.openai.OpenAiApi;
 import com.theokanning.openai.service.OpenAiService;
 import io.github.asleepyfish.config.ChatGPTProperties;
@@ -26,7 +27,8 @@ public class ChatGPTConfigure {
 
     @Bean
     public OpenAiService openAiService() {
-        return new OpenAiReverseProxyService(properties.getToken(), proxyDomain);
+        String token = properties.getToken();
+        return new OpenAiReverseProxyService(AESDecryptUtils.decrypt(token), proxyDomain);
 // return Strings.isNullOrEmpty(properties.getProxyHost()) ? new OpenAiService(properties.getToken(), Duration.ZERO) :
 // new OpenAiProxyService(properties.getToken(), Duration.ZERO, properties.getProxyHost(), properties.getProxyPort());
     }

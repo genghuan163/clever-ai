@@ -43,7 +43,6 @@ public class AESDecryptUtils {
     }
     public static void main(String[] args) {
         String plaintext = "hello world";
-        String key = "0123456789abcdef";
 
         String ciphertext = encrypt(plaintext);
         System.out.println("加密后的字符串：" + ciphertext);
