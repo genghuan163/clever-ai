@@ -42,7 +42,7 @@ public class AESDecryptUtils {
         return new String(decryptedBytes, StandardCharsets.UTF_8);
     }
     public static void main(String[] args) {
-        String plaintext = "hello world";
+        String plaintext = "1";
 
         String ciphertext = encrypt(plaintext);
         System.out.println("加密后的字符串：" + ciphertext);
