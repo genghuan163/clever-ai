@@ -1,20 +1,14 @@
 package com.jjh.cleverai.jwt;
 
 import cn.hutool.core.text.CharSequenceUtil;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.Claim;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.jjh.cleverai.annotation.PassToken;
 import com.jjh.cleverai.cache.TokenCache;
 import com.jjh.cleverai.common.ORuntimeException;
 import com.jjh.cleverai.common.enums.ResponseEnum;
 import com.jjh.cleverai.model.TUsers;
 import com.jjh.cleverai.utils.JwtUtil;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -23,8 +17,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Map;
 
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
